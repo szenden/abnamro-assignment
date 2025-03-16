@@ -1,0 +1,17 @@
+MATCH (n) DETACH DELETE n;  // ⚠️ Deletes all existing nodes (Be careful!)
+
+CREATE (a:Node {name: "A", description: "This is a description of A"})
+CREATE (b:Node {name: "B", description: "This is a description of B"})
+CREATE (c:Node {name: "C", description: "This is a description of C"})
+CREATE (d:Node {name: "D", description: "This is a description of D"})
+CREATE (b1:Node {name: "B-1", description: "This is a description of B-1"})
+CREATE (b2:Node {name: "B-2", description: "This is a description of B-2"})
+CREATE (b3:Node {name: "B-3", description: "This is a description of B-3"})
+
+CREATE (a)-[:HAS_CHILD]->(b)
+CREATE (a)-[:HAS_CHILD]->(c)
+CREATE (a)-[:HAS_CHILD]->(d)
+
+CREATE (b)-[:HAS_CHILD]->(b1)
+CREATE (b)-[:HAS_CHILD]->(b2)
+CREATE (b)-[:HAS_CHILD]->(b3);
