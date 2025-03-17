@@ -5,24 +5,7 @@ const router = express.Router();
 export default (session) => {
     router.get('/nodes', async (req, res) => {
         try {
-            // // Fetch all nodes and their relationships
-            // const result = await session.run(`
-            //     MATCH (parent)
-            //     OPTIONAL MATCH (parent)-[:HAS_CHILD]->(child)
-            //     RETURN parent, collect(child) AS children
-            // `);
 
-            // // Process the data into the correct hierarchy
-            // const nodes = result.records.map(record => {
-            //     const parent = record.get('parent').properties;
-            //     const children = record.get('children')
-            //         .filter(child => child) // Remove null values
-            //         .map(child => child.properties);
-     
-            //     return { ...parent, children };
-            // });
-
-            // res.json({ data: nodes });
             const result = await session.run(`
                 MATCH (parent:Node)
                 OPTIONAL MATCH (parent)-[:HAS_CHILD]->(child:Node)
