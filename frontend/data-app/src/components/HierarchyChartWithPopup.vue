@@ -10,8 +10,8 @@ const showPopup = ref(false);
 
 const fetchGraphData = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/api/graph/nodes", {
-      headers: { Authorization: "Bearer your_secure_token" },
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/graph/nodes`, {
+      headers: { Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}` },
     });
     data.value = response.data.data[0]; // Assuming "A" is the root
     drawChart();
