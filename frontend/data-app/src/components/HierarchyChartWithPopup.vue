@@ -6,7 +6,7 @@ import type { GraphNode } from "../types";
 
 const data = ref<GraphNode | null>(null);
 const selectedNode = ref<GraphNode | null>(null); // Store selected node
-  const showPopup = ref(false);
+const showPopup = ref(false);
 
 const fetchGraphData = async () => {
   try {
