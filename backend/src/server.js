@@ -24,7 +24,7 @@ const session = driver.session();
 
 // Enable CORS
 app.use(cors({
-    origin: "http://localhost:5173", // Allow requests from Vue frontend
+    origin: process.env.CORS_ORIGIN, // Allow requests from Vue frontend
     methods: "GET,POST,PUT,DELETE",
     allowedHeaders: "Content-Type,Authorization"
 }));
