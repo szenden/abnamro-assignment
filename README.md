@@ -19,18 +19,15 @@ A web application built as a technical assignment for ABN AMRO. This project dem
 ### Frontend
 
 - Frontend Framework: Vue3, D3.js 
-- State Management: [If applicable]
-- Styling: Tailwind
-- Testing: [Testing frameworks used]
+- Styling: Tailwind CSS, Postcss
+- Testing: vitest
 
 ### Backend
 
 - Runtime: Node.js
-- Framework: [Express/NestJS/etc.]
-- Database: [PostgreSQL/MongoDB/etc.]
-- ORM/ODM: [Prisma/Mongoose/etc.]
-- Authentication: [JWT/Session/etc.]
-- API Documentation: [Swagger/OpenAPI]
+- Framework: Express.js
+- Database: Neo4j
+- Authentication: JWT Bearer token
 
 ## Getting Started
 
@@ -38,7 +35,7 @@ A web application built as a technical assignment for ABN AMRO. This project dem
 
 - Node.js (v14 or higher)
 - npm or yarn
-- Database [PostgreSQL/MongoDB/etc.]
+- Database Neo4j
 
 ### Installation
 
@@ -64,12 +61,18 @@ npm install
 
 ```bash
 # Backend .env file
-DATABASE_URL=
-JWT_SECRET=
 PORT=3000
+NEO4J_URI=bolt://localhost:7687/neo4j
+NEO4J_USER=<your_db_username>
+NEO4J_PASSWORD=<your_db_password>
+AUTH_TOKEN=<your_secure_token>
+CORS_ORIGIN=http://localhost:5173
 
 # Frontend .env file
-VITE_API_URL=http://localhost:3000
+VITE_API_BASE_URL=http://localhost:3000
+VITE_API_PATH=api/graph/nodes
+VITE_API_TIMEOUT=30000
+VITE_AUTH_TOKEN=<your_secure_token>
 ```
 
 4. Start the development servers
@@ -86,8 +89,9 @@ npm run dev
 
 ### Database Setup
 
-1. Install database
-2. Run migrations
+1. Install Neo4j Desktop as the graph database
+2. Create your database
+2. Run scripts (scripts/data_file.txt)
 
 ```bash
 cd backend
@@ -103,31 +107,6 @@ npm test
 
 # Frontend tests
 cd frontend
-npm test
+npm run test:unit
 ```
 
-## Project Structure
-
-```
-
-## API Documentation
-The API documentation is available at `http://localhost:3000/api-docs` when running the development server.
-
-### Key API Endpoints
-- `GET /api/v1/resources` - List resources
-- `POST /api/v1/resources` - Create resource
-- `PUT /api/v1/resources/:id` - Update resource
-- `DELETE /api/v1/resources/:id` - Delete resource
-
-## Contributing
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## Contact
-Your Name - [your email]
-
-Project Link: [repository-url]
-```
