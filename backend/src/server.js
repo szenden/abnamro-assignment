@@ -7,9 +7,6 @@ import neo4j from 'neo4j-driver';
 import graphRoutes from './routes/graphRoutes.js';
 import authMiddleware from './middleware/authMiddleware.js';
 
-console.log("NEO4J_URI:", process.env.NEO4J_URI);
-console.log("NEO4J_USER:", process.env.NEO4J_USER);
-console.log("NEO4J_PASSWORD:", process.env.NEO4J_PASSWORD);
 
 // const cors = require('cors');
 const app = express();
@@ -31,7 +28,7 @@ app.use(cors({
 
 // Middleware
 app.use(express.json());
-// app.use(authMiddleware);
+app.use(authMiddleware);
 
 // Routes
 app.use('/api/graph', graphRoutes(session));

@@ -15,4 +15,13 @@ describe('Graph API Endpoints', () => {
             .get('/api/graph/nodes');
         expect(res.statusCode).toEqual(401);
     });
+
+    // add test to test the return of the nodes
+    it('should return nodes from the graph database', async () => {
+        const res = await request(app)
+            .get('/api/graph/nodes')
+            .set('Authorization', `Bearer ${process.env.AUTH_TOKEN}`);
+        expect(res.statusCode).toEqual(200);
+        expect(res.body).toHaveProperty('data');
+    });
 });
