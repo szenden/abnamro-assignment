@@ -93,10 +93,7 @@ npm run dev
 2. Create your database
 2. Run scripts (scripts/data_file.txt)
 
-```bash
-cd backend
-npm run migrate
-```
+
 
 ### Running Tests
 
