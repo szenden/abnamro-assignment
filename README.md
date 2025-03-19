@@ -24,7 +24,7 @@ A web application built as a technical assignment for ABN AMRO. This project dem
 
 ### Prerequisites
 
-- Node.js (v16 or higher)
+- Node.js (v18 or higher)
 - npm or yarn
 - Database Neo4j
 
