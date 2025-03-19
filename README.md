@@ -75,7 +75,7 @@ cd backend
 node src/server.js
 
 # Frontend
-cd frontend/data_app
+cd frontend
 npm run dev
 ```
 
