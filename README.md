@@ -120,3 +120,45 @@ npm test
 cd frontend
 npm run test:unit
 ```
+
+### Deploy to Azure
+The project is configured for automated deployment to Azure using Azure DevOps Pipelines. The deployment process is defined in `azure-ci-pipeline.yml` and consists of three main stages:
+
+1. **Build and Test Stage**
+   - Runs frontend and backend tests in parallel
+   - Frontend:
+     - Installs Node.js 18.x
+     - Installs dependencies
+     - Runs unit tests
+     - Builds the application
+   - Backend:
+     - Installs Node.js 18.x 
+     - Installs dependencies
+     - Runs tests
+
+2. **Build and Push Containers Stage**
+   - Builds Docker containers for both frontend and backend
+   - Pushes containers to Azure Container Registry
+   - Tags images with:
+     - Build ID
+     - Latest
+     - Dev
+
+3. **Deploy Stage**
+   - Only runs on successful merge to main branch
+   - Deploys backend container to Azure Web App
+   - Deploys frontend container to Azure Web App
+
+To set up deployment:
+
+1. Create an Azure DevOps project
+2. Configure Azure Container Registry
+3. Update the following variables in azure-ci-pipeline.yml:
+   ```yaml
+   azureSubscription: "<your-azure-subscription-name>"
+   azureContainerRegistry: "<your-azure-container-registry-id>"
+   ```
+4. Create Azure Web Apps for both frontend and backend
+5. Set up the pipeline in Azure DevOps using the azure-ci-pipeline.yml file
+
+The pipeline will automatically trigger on pushes to the main branch.
