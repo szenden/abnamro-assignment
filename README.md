@@ -4,15 +4,6 @@
 
 A web application built as a technical assignment for ABN AMRO. This project demonstrates modern web development practices and clean code principles, featuring both frontend and backend implementations.
 
-## Features
-
-- Feature-rich web application
-- Modern UI/UX design
-- Responsive layout
-- Clean and maintainable code structure
-- RESTful API endpoints
-- Secure data handling
-- Database integration
 
 ## Technologies Used
 
@@ -28,6 +19,7 @@ A web application built as a technical assignment for ABN AMRO. This project dem
 - Framework: Express.js
 - Database: Neo4j
 - Authentication: JWT Bearer token
+- Testing: Jest
 
 ## Getting Started
 
@@ -42,7 +34,7 @@ A web application built as a technical assignment for ABN AMRO. This project dem
 1. Clone the repository
 
 ```bash
-git clone [repository-url]
+git clone https://github.com/szenden/abnamro-assignment
 ```
 
 2. Install dependencies for both frontend and backend
@@ -80,10 +72,10 @@ VITE_AUTH_TOKEN=<your_secure_token>
 ```bash
 # Backend
 cd backend
-npm run dev
+node src/server.js
 
 # Frontend
-cd frontend
+cd frontend/data_app
 npm run dev
 ```
 
