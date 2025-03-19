@@ -5,6 +5,7 @@ import express from 'express';
 
 const router = express.Router();
 
+// Get the nodes and their children
 export default (session) => {
     router.get('/nodes', async (req, res) => {
         try {
