@@ -1,13 +1,30 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-// import HierarchyChart from './components/HierarchyChart.vue'
-import HierarchyChartWithPopup from './components/HierarchyChartWithPopup.vue'
+import { ref, onMounted } from 'vue'
+import axios from "axios";
+import TreeVisualization from './components/TreeVisualization.vue'
+
+
+//fetch data from the backend api
+const treeData = ref<[]>([]);
+const fetchGraphData = async () => {
+  try {
+    const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/graph/nodes`, {
+      headers: { Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}` },
+    });
+    treeData.value = response.data.data;
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+};
+
+// Mount the component
+onMounted(fetchGraphData);
 </script>
 
 <template>
   <div>
-    <h1>Graph Hierarchy</h1>
-    <HierarchyChartWithPopup />
+    <h1 class="text-2xl font-bold">Graph Hierarchy</h1>
+    <TreeVisualization :data="treeData" />
   </div>
 
 </template>
