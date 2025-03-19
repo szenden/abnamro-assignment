@@ -59,12 +59,43 @@ NEO4J_USER=<your_db_username>
 NEO4J_PASSWORD=<your_db_password>
 AUTH_TOKEN=<your_secure_token>
 CORS_ORIGIN=http://localhost:5173
+USE_MOCK_DATA=false
 
 # Frontend .env file
 VITE_API_BASE_URL=http://localhost:3000
 VITE_API_PATH=api/graph/nodes
 VITE_API_TIMEOUT=30000
 VITE_AUTH_TOKEN=<your_secure_token>
+```
+
+4. Setup the data for store
+### Use Mock Data
+Enable the backend .env file USE_MOCK_DATA=true
+
+### Use Database Setup
+
+#### Neo4j Desktop
+1. Install Neo4j Desktop as the graph database
+2. Create your database
+2. Run scripts (scripts/data_file.txt)
+
+#### Neo4j Docker
+
+##### Prerequisites
+- Ensure you have [Docker](https://www.docker.com/get-started) installed on your system.
+- Running Neo4j with Docker
+- Pull the Official Neo4j Image
+- Create your database
+- Run scripts (scripts/data_file.txt)
+
+```sh
+docker pull neo4j
+
+docker run \
+    --name neo4j \
+    -p 7474:7474 -p 7687:7687 \
+    -e NEO4J_AUTH=neo4j/password \
+    -d neo4j
 ```
 
 4. Start the development servers
@@ -78,14 +109,6 @@ node src/server.js
 cd frontend
 npm run dev
 ```
-
-### Database Setup
-
-1. Install Neo4j Desktop as the graph database
-2. Create your database
-2. Run scripts (scripts/data_file.txt)
-
-
 
 ### Running Tests
 
