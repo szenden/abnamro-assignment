@@ -115,12 +115,12 @@ stages:
             displayName: "Deploy Backend Container"
             inputs:
               azureSubscription: "$(azureSubscription)"
-              appName: "todo-backend"
+              appName: "abnamro-assignment-backend"
               containers: "$(azureContainerRegistry)/backend:$(tag)"
 
           - task: AzureWebAppContainer@1
             displayName: "Deploy Frontend Container"
             inputs:
               azureSubscription: "$(azureSubscription)"
-              appName: "todo-frontend"
+              appName: "abnamro-assignment-frontend"
               containers: "$(azureContainerRegistry)/frontend:$(tag)"
