@@ -4,22 +4,25 @@ import * as d3 from "d3";
 import axios from "axios";
 import type { GraphNode } from "../types";
 
+//variables
 const data = ref<GraphNode | null>(null);
-const selectedNode = ref<GraphNode | null>(null); // Store selected node
+const selectedNode = ref<GraphNode | null>(null);
 const showPopup = ref(false);
 
+//fetch data from the backend api
 const fetchGraphData = async () => {
   try {
     const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/graph/nodes`, {
       headers: { Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}` },
     });
-    data.value = response.data.data[0]; // Assuming "A" is the root
+    data.value = response.data.data[0];
     drawChart();
   } catch (error) {
     console.error("Error fetching data:", error);
   }
 };
 
+//draw the chart
 const drawChart = () => {
   if (!data.value) return;
 
@@ -83,7 +86,7 @@ const drawChart = () => {
     .text(d => d.data.name);
 };
 
-// Close popup function
+//close popup function
 const closePopup = () => {
   showPopup.value = false;
   selectedNode.value = null;
@@ -99,10 +102,10 @@ onMounted(fetchGraphData);
       <div class="bg-white p-6 rounded-lg shadow-lg text-center w-80">
         <h2 class="text-lg font-bold text-gray-800">{{ selectedNode?.name }}</h2>
         <p class="text-gray-600 mt-2">{{ selectedNode?.description }}</p>
-        <!-- Close Button (Bottom) -->
         <button @click="closePopup" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition">Close</button>
       </div>
     </div>
+    
      <!-- Chart Container -->
     <div id="chart" class="bg-white shadow-lg p-6 rounded-lg"></div>
   </div>

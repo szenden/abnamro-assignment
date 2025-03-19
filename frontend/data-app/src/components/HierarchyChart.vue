@@ -4,77 +4,24 @@ import * as d3 from 'd3'
 import axios from 'axios'
 import type { GraphNode } from '../types'
 
+//variables
 const data = ref<GraphNode | null>(null)
-const selectedNode = ref<GraphNode | null>(null) // Store selected node
+const selectedNode = ref<GraphNode | null>(null)
 
+//fetch data from the backend api
 const fetchGraphData = async () => {
   try {
     const response = await axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/graph/nodes`, {
       headers: { Authorization: `Bearer ${import.meta.env.VITE_AUTH_TOKEN}` },
     })
-    data.value = response.data.data[0] // Assuming "A" is the root
+    data.value = response.data.data[0]
     drawChart()
   } catch (error) {
     console.error('Error fetching data:', error)
   }
 }
 
-// const drawChart = () => {
-//   if (!data.value) return;
-
-//   // SVG canvas dimensions
-//   const width = 800, height = 700;
-
-//   // Remove previous SVG (to prevent duplicates)
-//   d3.select("#chart").selectAll("svg").remove();
-
-//   // Create the SVG container
-//   const svg = d3.select("#chart")
-//     .append("svg")
-//     .attr("width", width)
-//     .attr("height", height)
-//     .append("g")
-//     .attr("transform", "translate(50,50)");
-
-//   // Convert data into D3 hierarchical format
-//   const root = d3.hierarchy(data.value);
-//   const treeLayout = d3.tree<GraphNode>().size([width - 100, height - 150]);
-//   treeLayout(root);
-
-//   // Generate links
-//   const linkGenerator = d3.linkHorizontal()
-//     .x(d => d.y)  // Flip X & Y for horizontal layout
-//     .y(d => d.x);
-
-//   svg.selectAll(".link")
-//     .data(root.links())
-//     .enter()
-//     .append("path")
-//     .attr("class", "link")
-//     .attr("fill", "none")
-//     .attr("stroke", "#999")
-//     .attr("stroke-width", 2)
-//     .attr("d", d => linkGenerator({ source: [d.source.y, d.source.x], target: [d.target.y, d.target.x] }));
-
-//   // Generate nodes
-//   const nodes = svg.selectAll(".node")
-//     .data(root.descendants())
-//     .enter()
-//     .append("g")
-//     .attr("transform", d => `translate(${d.y},${d.x})`);
-
-//   nodes.append("circle")
-//     .attr("r", 6)
-//     .attr("fill", "#007bff");
-
-//   nodes.append("text")
-//     .attr("dy", 3)
-//     .attr("x", d => (d.children ? -10 : 10))
-//     .attr("text-anchor", d => (d.children ? "end" : "start"))
-//     .attr("font-size", "12px")
-//     .text(d => d.data.name);
-// };
-
+//draw the tree chart
 const drawChart = () => {
   if (!data.value) return
 
@@ -148,7 +95,6 @@ onMounted(fetchGraphData)
 </script>
 
 <template>
-  <!-- <div id="chart"></div> -->
   <div class="container">
     <!-- Sidebar for selected node details -->
     <div class="sidebar" v-if="selectedNode">
