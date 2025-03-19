@@ -4,12 +4,11 @@
 
 A web application built as a technical assignment for ABN AMRO. This project demonstrates modern web development practices and clean code principles, featuring both frontend and backend implementations.
 
-
 ## Technologies Used
 
 ### Frontend
 
-- Frontend Framework: Vue3, D3.js 
+- Frontend Framework: Vue3, D3.js
 - Styling: Tailwind CSS, Postcss
 - Testing: vitest
 
@@ -69,19 +68,19 @@ VITE_AUTH_TOKEN=<your_secure_token>
 ```
 
 4. Setup the data for store
-### Use Mock Data
-Enable the backend .env file USE_MOCK_DATA=true
 
-### Use Database Setup
+#### Use Mock Data
+
+- Enable the backend .env file USE_MOCK_DATA=true
 
 #### Neo4j Desktop
-1. Install Neo4j Desktop as the graph database
-2. Create your database
-2. Run scripts (scripts/data_file.txt)
+
+- Install Neo4j Desktop as the graph database
+- Create your database
+- Run scripts (scripts/data_file.txt)
 
 #### Neo4j Docker
 
-##### Prerequisites
 - Ensure you have [Docker](https://www.docker.com/get-started) installed on your system.
 - Running Neo4j with Docker
 - Pull the Official Neo4j Image
@@ -98,7 +97,7 @@ docker run \
     -d neo4j
 ```
 
-4. Start the development servers
+5. Start the development servers
 
 ```bash
 # Backend
@@ -121,4 +120,3 @@ npm test
 cd frontend
 npm run test:unit
 ```
-
