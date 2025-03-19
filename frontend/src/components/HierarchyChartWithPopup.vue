@@ -71,7 +71,7 @@ const drawChart = () => {
     .attr("height", rectHeight)
     .attr("x", -rectWidth / 2)
     .attr("y", -rectHeight / 2)
-    .attr("fill", d => (d.data.name === selectedNode.value?.name ? "red" : "#007bff")) // Highlight selected node
+    .attr("fill", d => (d.data.name === selectedNode.value?.name ? "#fff" : "#007bff")) 
     .attr("class", "fill-gray-800 hover:fill-blue-500 transition duration-300 cursor-pointer")
     .attr("stroke", "#333")
     .attr("stroke-width", 2)
@@ -92,10 +92,12 @@ const closePopup = () => {
   selectedNode.value = null;
 };
 
+// Mount the component
 onMounted(fetchGraphData);
 </script>
 
 <template>
+  
    <!-- Popup -->
   <div class="flex justify-center items-center min-h-screen bg-gray-100">
     <div v-if="showPopup" class="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-50 popup">
