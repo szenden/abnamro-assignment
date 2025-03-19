@@ -69,23 +69,23 @@ VITE_AUTH_TOKEN=<your_secure_token>
 
 4. Setup the data for store
 
-#### Use Mock Data
+    #### Use Mock Data
 
-- Enable the backend .env file USE_MOCK_DATA=true
+    - Enable the backend .env file USE_MOCK_DATA=true
 
-#### Neo4j Desktop
+    #### Neo4j Desktop
 
-- Install Neo4j Desktop as the graph database
-- Create your database
-- Run scripts (scripts/data_file.txt)
+    - Install Neo4j Desktop as the graph database
+    - Create your database
+    - Run scripts (scripts/data_file.txt)
 
-#### Neo4j Docker
+    #### Neo4j Docker
 
-- Ensure you have [Docker](https://www.docker.com/get-started) installed on your system.
-- Running Neo4j with Docker
-- Pull the Official Neo4j Image
-- Create your database
-- Run scripts (scripts/data_file.txt)
+    - Ensure you have [Docker](https://www.docker.com/get-started) installed on your system.
+    - Running Neo4j with Docker
+    - Pull the Official Neo4j Image
+    - Create your database
+    - Run scripts (scripts/data_file.txt)
 
 ```sh
 docker pull neo4j
