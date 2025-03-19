@@ -1,3 +1,6 @@
+import dotenv from 'dotenv';
+dotenv.config();
+
 import express from 'express';
 
 const router = express.Router();
@@ -5,6 +8,12 @@ const router = express.Router();
 export default (session) => {
     router.get('/nodes', async (req, res) => {
         try {
+
+            if(process.env.USE_MOCK_DATA){
+                const mockData = JSON.parse(await import('fs').then(fs => fs.promises.readFile('./src/data.json', 'utf8')));
+                res.json({ data: mockData });
+                return;
+            }
 
             const result = await session.run(`
                 MATCH (parent:Node)
