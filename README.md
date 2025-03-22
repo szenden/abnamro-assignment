@@ -4,6 +4,13 @@
 
 A web application built as a technical assignment for ABN AMRO. This project demonstrates modern web development practices and clean code principles, featuring both frontend and backend implementations.
 
+## Application Screenshot
+
+![Graph Hierarchy Visualization](./docs/images/graph-hierarchy.png)
+
+*The application displays an interactive graph hierarchy visualization showing parent-child relationships between nodes, with node details available on click.*
+
+
 ## Technologies Used
 
 ### Frontend
@@ -69,23 +76,23 @@ VITE_AUTH_TOKEN=<your_secure_token>
 
 4. Setup the data for store
 
-    #### Use Mock Data
+   #### Use Mock Data
 
-    - Enable the backend .env file USE_MOCK_DATA=true
+   - Enable the backend .env file USE_MOCK_DATA=true
 
-    #### Neo4j Desktop
+   #### Neo4j Desktop
 
-    - Install Neo4j Desktop as the graph database
-    - Create your database
-    - Run scripts (scripts/data_file.txt)
+   - Install Neo4j Desktop as the graph database
+   - Create your database
+   - Run scripts (scripts/data_file.txt)
 
-    #### Neo4j Docker
+   #### Neo4j Docker
 
-    - Ensure you have [Docker](https://www.docker.com/get-started) installed on your system.
-    - Running Neo4j with Docker
-    - Pull the Official Neo4j Image
-    - Create your database
-    - Run scripts (scripts/data_file.txt)
+   - Ensure you have [Docker](https://www.docker.com/get-started) installed on your system.
+   - Running Neo4j with Docker
+   - Pull the Official Neo4j Image
+   - Create your database
+   - Run scripts (scripts/data_file.txt)
 
 ```sh
 docker pull neo4j
@@ -122,9 +129,11 @@ npm run test:unit
 ```
 
 ### Deploy to Azure
+
 The project is configured for automated deployment to Azure using Azure DevOps Pipelines. The deployment process is defined in `azure-ci-pipeline.yml` and consists of three main stages:
 
 1. **Build and Test Stage**
+
    - Runs frontend and backend tests in parallel
    - Frontend:
      - Installs Node.js 18.x
@@ -132,11 +141,12 @@ The project is configured for automated deployment to Azure using Azure DevOps P
      - Runs unit tests
      - Builds the application
    - Backend:
-     - Installs Node.js 18.x 
+     - Installs Node.js 18.x
      - Installs dependencies
      - Runs tests
 
 2. **Build and Push Containers Stage**
+
    - Builds Docker containers for both frontend and backend
    - Pushes containers to Azure Container Registry
    - Tags images with:
